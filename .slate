@@ -5,6 +5,24 @@ config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
+# General aliases
+alias sox screenOriginX
+alias soy screenOriginY
+alias ssx screenSizeX
+alias ssy screenSizeY
+
+# Position aliases
+alias centered ${sox}+${ssx}/8;${soy}+${ssy}/8 ${ssx}/8*6;${ssy}/8*6
+alias fullscreen ${sox};${soy} ${ssx};${ssy}
+alias leftHalf ${sox};${soy} ${ssx}/2;${ssy}
+alias bottomHalf ${sox};${soy}+${ssy}/2 ${ssx};${ssy}/2
+alias topHalf ${sox};${soy} ${ssx};${ssy}/2
+alias rightHalf ${sox}+${ssx}/2;${soy} ${ssx}/2;${ssy}
+alias topLeftQuarter ${sox};${soy} ${ssx}/2;${ssy}/2
+alias topRightQuarter ${sox}+${ssx}/2;${soy} ${ssx}/2;${ssy}/2
+alias bottomLeftQuarter ${sox};${soy}+${ssy}/2 ${ssx}/2;${ssy}/2
+alias bottomRightQuarter ${sox}+${ssx}/2;${soy}+${ssy}/2 ${ssx}/2;${ssy}/2
+
 # Resize Bindings
 bind l:alt        resize +10% +0
 bind h:alt        resize -10% +0
@@ -16,10 +34,22 @@ bind k:shift;alt  resize +0   +10% bottom-right
 bind j:shift;alt  resize +0   -10% bottom-right
 
 # Push Bindings
-bind l:shift;cmd   push right bar-resize:screenSizeX/2
-bind h:shift;cmd   push left  bar-resize:screenSizeX/2
-bind k:shift;cmd   push up    bar-resize:screenSizeY/2
-bind j:shift;cmd   push down  bar-resize:screenSizeY/2
+#bind l:shift;cmd   push right bar-resize:screenSizeX/2
+#bind h:shift;cmd   push left  bar-resize:screenSizeX/2
+#bind k:shift;cmd   push up    bar-resize:screenSizeY/2
+#bind j:shift;cmd   push down  bar-resize:screenSizeY/2
+
+# Move Bindings
+bind g:cmd;shift move ${centered}
+bind o:cmd;shift move ${fullscreen}
+bind h:cmd;shift move ${leftHalf}
+bind j:cmd;shift move ${bottomHalf}
+bind k:cmd;shift move ${topHalf}
+bind l:cmd;shift move ${rightHalf}
+bind y:cmd;shift move ${topLeftQuarter}
+bind u:cmd;shift move ${topRightQuarter}
+bind n:cmd;shift move ${bottomLeftQuarter}
+bind m:cmd;shift move ${bottomRightQuarter}
 
 # nudge Bindings
 bind l:ctrl nudge +10% +0
@@ -45,5 +75,5 @@ bind k:cmd;alt   focus behind
 bind j:cmd;alt focus behind
 
 # Window Hints
-bind esc:cmd hint
+bind esc:cmd hint asdfjklgh
 bind esc:alt grid
