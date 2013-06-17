@@ -46,6 +46,8 @@ bind h:cmd;shift move ${leftHalf}
 bind j:cmd;shift move ${bottomHalf}
 bind k:cmd;shift move ${topHalf}
 bind l:cmd;shift move ${rightHalf}
+bind up:cmd;shift move ${topLeftQuarter}
+bind down:cmd;shift move ${bottomLeftQuarter}
 
 # nudge Bindings
 bind l:ctrl nudge +10% +0
